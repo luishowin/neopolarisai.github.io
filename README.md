@@ -1,2 +1,2 @@
 # neopolarisai.github.io
-Neopolaris website 
+Neopolaris website, pls do not steal
