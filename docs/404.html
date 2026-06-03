@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | NeoPolaris AI</title>
+  <meta name="description" content="The page you're looking for doesn't exist. NeoPolaris AI — Your North Star in AI Adoption." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;1,300;1,400&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #f0eee8;
+      --text-dim: rgba(240,238,232,0.50);
+      --text-faint: rgba(240,238,232,0.22);
+      --accent: #7BACFF;
+      --accent-sky: #38BDF8;
+      --accent-glow: rgba(123,172,255,0.13);
+      --accent-glow-strong: rgba(123,172,255,0.26);
+      --border: rgba(123,172,255,0.1);
+      --border-hover: rgba(123,172,255,0.32);
+      --font-serif: 'Inria Serif', Georgia, serif;
+      --font-sans: 'Inria Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── AMBIENT ── */
+    .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .ambient-orb { position: absolute; border-radius: 50%; filter: blur(130px); }
+    .orb-1 {
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, #7BACFF, transparent 70%);
+      top: -260px; left: -220px; opacity: 0.12;
+      animation: drift1 18s ease-in-out infinite alternate;
+    }
+    .orb-2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #38BDF8, transparent 70%);
+      bottom: -80px; right: -160px; opacity: 0.07;
+      animation: drift2 24s ease-in-out infinite alternate;
+    }
+    .orb-3 {
+      width: 460px; height: 460px;
+      background: radial-gradient(circle, #7BACFF, transparent 70%);
+      top: 45%; left: 50%; opacity: 0.06;
+      animation: drift3 30s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 { from{transform:translate(0,0) scale(1);} to{transform:translate(70px,90px) scale(1.1);} }
+    @keyframes drift2 { from{transform:translate(0,0) scale(1);} to{transform:translate(-60px,-70px) scale(1.15);} }
+    @keyframes drift3 { from{transform:translate(0,0);} to{transform:translate(-80px,40px);} }
+
+    body::before {
+      content:''; position:fixed; inset:0; z-index:1; pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat:repeat; background-size:128px; opacity:0.35;
+    }
+
+    /* ── BIG 404 BACKGROUND NUMBER ── */
+    .bg-404 {
+      position: fixed;
+      right: -2vw; bottom: -4vh;
+      font-family: var(--font-serif);
+      font-size: clamp(28vw, 38vw, 520px);
+      font-weight: 300; line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(123,172,255,0.06);
+      user-select: none; pointer-events: none;
+      z-index: 1;
+      letter-spacing: -0.05em;
+      animation: fadeIn 1.2s ease 0.2s both;
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      position: relative; z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.4rem 5vw 2.2rem;
+      min-height: 100svh;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: var(--font-mono); font-size: 0.74rem;
+      font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--text); text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .logo:hover { color: var(--accent); }
+
+    .error-badge {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-family: var(--font-mono); font-size: 0.58rem;
+      font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(240,100,100,0.7);
+      border: 1px solid rgba(240,100,100,0.18);
+      padding: 0.38rem 0.9rem;
+    }
+    .error-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(240,100,100,0.7);
+      flex-shrink: 0;
+    }
+
+    /* ── CENTRE ── */
+    .centre {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem 0 2rem;
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono); font-size: clamp(0.6rem,1vw,0.72rem);
+      font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--accent);
+      display: flex; align-items: center; gap: 0.55rem;
+      margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+    }
+
+    .error-code {
+      font-family: var(--font-mono); font-size: clamp(0.72rem,1.1vw,0.9rem);
+      font-weight: 400; letter-spacing: 0.18em;
+      color: var(--text-faint);
+      margin-bottom: 1.2rem;
+      display: block;
+      opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards;
+    }
+
+    .main-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7vw, 7.5rem);
+      font-weight: 300; line-height: 1.04; letter-spacing: -0.025em;
+      margin-bottom: 1.6rem;
+      opacity: 0; animation: fadeUp 0.8s ease 0.45s forwards;
+    }
+    .main-headline em { font-style: italic; color: var(--accent); }
+
+    .descriptor {
+      font-family: var(--font-sans); font-size: clamp(0.92rem,1.3vw,1.08rem);
+      font-weight: 300; color: var(--text-dim);
+      max-width: 50ch; line-height: 1.85;
+      margin-bottom: 3.2rem;
+      opacity: 0; animation: fadeUp 0.8s ease 0.58s forwards;
+    }
+
+    /* ── ACTION BUTTONS ── */
+    .actions {
+      display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
+    }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.65rem;
+      font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      border: 1px solid var(--border-hover);
+      padding: 0.85rem 1.8rem;
+      position: relative; overflow: hidden;
+      transition: color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .btn-ghost::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-101%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); z-index: 0;
+    }
+    .btn-ghost:hover::before { transform: translateX(0); }
+    .btn-ghost:hover { color: #000; border-color: var(--accent); box-shadow: 0 0 30px var(--accent-glow-strong); }
+    .btn-ghost span { position: relative; z-index: 1; }
+
+    .btn-text {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none;
+      transition: color 0.25s ease;
+      padding: 0.85rem 0;
+    }
+    .btn-text:hover { color: var(--accent); }
+
+    /* ── DIVIDER ── */
+    .centre-divider {
+      width: 100%; max-width: 400px; height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+      margin: 2.8rem 0;
+      opacity: 0; animation: fadeUp 0.6s ease 0.78s forwards;
+    }
+
+    /* ── QUICK LINKS ── */
+    .quick-links {
+      opacity: 0; animation: fadeUp 0.8s ease 0.88s forwards;
+    }
+    .quick-label {
+      font-family: var(--font-mono); font-size: 0.58rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 1rem; display: block;
+    }
+    .quick-list {
+      display: flex; gap: 0; flex-wrap: wrap;
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+    .quick-link {
+      font-family: var(--font-sans); font-size: 0.8rem; font-weight: 300;
+      color: var(--text-dim); text-decoration: none;
+      padding: 0.65rem 1.4rem;
+      border-right: 1px solid var(--border);
+      transition: color 0.25s ease, background 0.25s ease;
+      letter-spacing: 0.04em;
+      display: flex; align-items: center; gap: 0.45rem;
+      white-space: nowrap;
+    }
+    .quick-link:last-child { border-right: none; }
+    .quick-link:hover { color: var(--accent); background: var(--accent-glow); }
+
+    /* ── BOTTOM BAR ── */
+    .bottom-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.95s forwards;
+    }
+    .bottom-copy {
+      font-family: var(--font-mono); font-size: 0.58rem;
+      letter-spacing: 0.1em; color: var(--text-faint);
+    }
+    .bottom-links { display: flex; gap: 1.6rem; }
+    .bottom-links a {
+      font-family: var(--font-sans); font-size: 0.72rem; font-weight: 300;
+      color: var(--text-faint); text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .bottom-links a:hover { color: var(--accent); }
+
+    /* ── VERTICAL LABEL ── */
+    .vertical-label {
+      position: fixed;
+      right: 2.2rem; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-mono); font-size: 0.52rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-faint);
+      writing-mode: vertical-rl;
+      display: flex; align-items: center; gap: 0.8rem;
+      z-index: 3;
+      opacity: 0; animation: fadeIn 1s ease 1.2s forwards;
+    }
+    .vertical-label::before {
+      content: '';
+      display: block; width: 1px; height: 40px;
+      background: var(--border);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      body { overflow: auto; }
+      .page { padding: 1.8rem 6vw 2rem; min-height: 100svh; }
+      .error-badge { display: none; }
+      .bg-404 { font-size: 52vw; right: -4vw; bottom: -2vh; -webkit-text-stroke: 1px rgba(123,172,255,0.05); }
+      .main-headline { font-size: clamp(2.4rem, 11vw, 4.2rem); }
+      .quick-list { flex-direction: column; width: 100%; max-width: 280px; }
+      .quick-link { border-right: none; border-bottom: 1px solid var(--border); }
+      .quick-link:last-child { border-bottom: none; }
+      .actions { flex-direction: column; align-items: flex-start; }
+      .btn-ghost, .btn-text { width: auto; }
+      .vertical-label { display: none; }
+      .bottom-bar { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 1.5rem 5vw 1.8rem; }
+      .logo { font-size: 0.68rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
+  <!-- Ghost 404 in background -->
+  <div class="bg-404" aria-hidden="true">404</div>
+
+  <!-- Vertical side label -->
+  <span class="vertical-label" aria-hidden="true">Error 404 — Not Found</span>
+
+  <div class="page">
+
+    <!-- ── TOP BAR ── -->
+    <header class="top-bar">
+      <a href="https://neopolaris.ai/" class="logo">
+        <svg width="26" height="22" viewBox="0 0 683 576" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M522.402 276.915L557.937 292.954L522.402 308.993L506.353 344.505L490.304 308.993L454.77 292.954L490.304 276.915L506.353 241.404L522.402 276.915Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M353.717 0.000612966C353.887 0.000987533 354.057 0.000480171 354.226 0.0018389C446.573 0.222474 528.715 43.8498 581.303 111.55C580.82 110.895 580.331 110.241 579.834 109.589C578.522 107.868 577.186 106.193 575.833 104.568C585.337 101.8 594.359 99.4489 602.844 97.5389C657.688 85.1931 686.107 92.1376 682.51 117.005C680.211 132.893 655.874 157.2 622.911 185.475C635.055 217.326 641.707 251.886 641.707 287.998C641.706 446.855 513.006 575.67 354.122 575.993C354.008 575.994 353.895 575.994 353.781 575.995C353.695 575.995 353.609 575.996 353.523 575.996C353.488 575.996 353.452 575.995 353.417 575.995C353.267 575.995 353.117 575.995 352.967 575.994C269.124 575.836 193.682 539.897 141.119 482.642C102.237 496.268 69.3999 504.417 45.1378 506.254C2.76053 509.464 -10.3868 493.193 8.28274 460.643C20.4537 439.423 45.5721 412.288 80.9588 381.768C70.8351 352.374 65.3383 320.827 65.3383 287.998C65.3383 129.097 194.11 0.254288 353.053 0.00122593C353.121 0.000864648 353.188 0.000205663 353.256 0H353.523C353.588 7.68821e-08 353.652 0.000570127 353.717 0.000612966ZM354.992 430.436C318.928 430.953 283.48 437.321 250.39 447.141C244.812 448.796 239.324 450.643 233.934 452.655C235.169 455.597 236.438 458.497 237.743 461.355C260.654 511.547 292.746 550.841 328.188 561.823C329.368 562.189 330.549 562.528 331.731 562.842C338.921 563.403 346.189 563.69 353.523 563.69C354.013 563.69 354.502 563.688 354.992 563.685V430.436ZM365.988 563.413C369.111 563.274 372.221 563.082 375.317 562.84C394.824 557.659 413.731 545.536 430.895 526.856C448.587 507.601 463.753 480.253 475.598 448.752C471.952 447.557 468.267 446.438 464.544 445.405C433.237 436.711 399.754 431.083 365.988 430.46V563.413ZM224.516 456.376C202.766 465.44 182.76 477.048 165.067 489.333C201.63 523.528 247.514 547.891 298.498 558.205C272.316 540.715 248.965 510.933 230.966 471.502C228.718 466.577 226.568 461.532 224.516 456.376ZM478.572 449.746C468.26 484.098 454.723 513.854 435.424 534.857C426.834 544.205 417.831 552.001 408.545 558.204C462.206 547.35 510.218 520.932 547.659 483.868C527.121 470.592 503.824 458.358 478.572 449.746ZM84.4991 391.473C61.9185 412.573 45.5888 431.418 36.7409 446.844C19.6662 476.613 31.6903 491.494 70.4476 488.559C87.452 487.271 109.062 482.594 134.236 474.87C113.247 450.296 96.3217 422.151 84.4991 391.473ZM563.327 108.979C542.153 123.283 517.876 135.245 491.378 144.456C497.733 164.478 502.781 185.95 506.353 208.464C502.749 185.746 496.441 164.73 488.43 145.466C482.382 147.509 476.222 149.411 469.96 151.164C436.9 160.42 401.641 165.391 365.988 165.855V298.022C396.042 298.38 425.867 298.218 453.035 297.165C424.901 298.294 395.528 298.931 365.988 299.076V376.199C396.825 361.06 427.462 344.325 458.595 323.621C425.364 345.785 395.695 363.707 365.988 380.008V425.662C401.375 426.123 436.362 431.025 469.188 440.14C472.091 440.946 474.973 441.784 477.832 442.653C485.573 420.945 491.764 397.444 496.156 373.377C491.705 397.765 486.668 421.469 480.413 443.449C507.498 451.9 532.497 463.163 554.517 476.834C600.946 427.499 629.393 361.069 629.393 287.998C629.393 284.21 629.315 280.439 629.164 276.688C619.689 280.215 604.436 283.561 583.855 286.557C609.57 282.814 623.759 276.472 628.852 270.608C627.841 254.382 624.864 225.902 613.443 193.511C597.187 207.181 579.292 221.641 561.163 236.423C581.255 220.04 598.529 204.803 612.526 190.954C602.918 164.572 587.665 135.771 563.327 108.979ZM77.8705 276.966C77.7264 280.625 77.6528 284.303 77.6528 287.998C77.6528 358.126 103.854 422.137 147.007 470.791C168.993 463.506 193.346 454.135 219.458 442.876C203.812 398.451 195.147 346.948 194.542 293.966C156.241 291.233 124.258 287.532 101.628 283.135C91.4115 281.15 83.5461 279.087 77.8705 276.966ZM354.992 385.968C318.651 405.427 281.593 422.951 237.269 443.301C235.254 444.226 233.246 445.14 231.247 446.047C231.298 446.179 231.35 446.31 231.402 446.442C236.028 444.862 240.72 443.365 245.475 441.954C280.071 431.687 317.281 426.153 354.992 425.663V385.968ZM201.46 294.571C202.148 346.137 212.799 396.183 228.531 438.92C234.33 436.363 240.21 433.717 246.165 430.983C283.528 413.83 319.448 398.548 354.992 381.529V299.108C321.098 299.134 287.159 298.513 254.788 297.243C236.746 296.534 217.643 295.636 201.46 294.571ZM226.31 143.293C209.814 190.863 201.03 241.702 201.432 291.946C219.486 293.266 240.978 294.351 261.761 295.167C290.783 296.306 322.849 297.357 354.992 297.868V239.134C354.96 239.134 354.992 171.655 354.992 165.855C314.834 165.333 274.609 159.174 236.39 146.74C232.994 145.636 229.634 144.485 226.31 143.293ZM149.057 102.918C101.628 151.904 81.5821 221.927 78.3299 268.54C81.5432 273.236 97.6291 277.817 119.478 282.061C138.24 285.706 163.921 288.838 194.518 291.274C194.499 288.295 194.506 285.311 194.539 282.324C195.089 231.764 202.971 182.695 217.155 139.864C191.861 129.976 168.895 117.523 149.057 102.918ZM353.523 12.3059C351.77 12.3059 350.02 12.323 348.275 12.3556C347.267 12.5513 346.25 12.7698 345.225 13.0127C309.571 21.4581 265.588 57.9959 241.603 106.515C236.606 116.624 232.061 127.34 227.989 138.56C232.485 140.374 237.055 142.048 241.693 143.557C278.204 155.434 316.629 162.586 354.992 163.107V12.3102C354.502 12.3077 354.013 12.3059 353.523 12.3059ZM365.988 163.107C400.038 162.645 433.708 156.632 465.282 147.792C472.466 145.78 479.509 143.386 486.395 140.693C472.539 108.974 454.153 82.1632 435.907 60.49C415.439 36.1778 397.339 19.0516 376.62 13.2578C373.094 12.9658 369.55 12.74 365.988 12.5817V163.107ZM408.544 17.7907C419.776 25.2927 430.58 35.1177 440.729 47.1733C460.819 71.0363 477.504 102.638 489.723 139.363C514.437 129.278 537.055 115.428 556.774 101.588C518.16 59.5624 466.666 29.5473 408.544 17.7907ZM304.611 16.6267C246.793 26.965 195.219 55.3043 155.903 95.6362C174.253 109.847 195.497 124.034 218.917 134.668C223.656 121.021 229.046 108.043 235.052 95.8924C260.245 55.0296 272.868 35.2111 304.611 16.6267Z" fill="white"/>
+        </svg>
+        NeoPolaris AI
+      </a>
+
+      <div class="error-badge">
+        <span class="error-dot"></span>
+        404 Error
+      </div>
+    </header>
+
+    <!-- ── CENTRE ── -->
+    <main class="centre">
+
+      <div class="eyebrow">
+        <svg width="14" height="14" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M13.5 0L14.9122 3.81639C16.3302 7.64846 19.3515 10.6698 23.1836 12.0878L27 13.5L23.1836 14.9122C19.3515 16.3302 16.3302 19.3515 14.9122 23.1836L13.5 27L12.0878 23.1836C10.6698 19.3515 7.64847 16.3302 3.81639 14.9122L0 13.5L3.81639 12.0878C7.64846 10.6698 10.6698 7.64847 12.0878 3.81639L13.5 0Z" fill="url(#sg-ey)"/>
+          <defs><linearGradient id="sg-ey" x1="12" y1="21" x2="19" y2="3" gradientUnits="userSpaceOnUse"><stop stop-color="#7BACFF"/><stop offset="1" stop-color="white"/></linearGradient></defs>
+        </svg>
+        NeoPolaris AI
+      </div>
+
+      <span class="error-code">HTTP 404 — Page Not Found</span>
+
+      <h1 class="main-headline">
+        This page<br/>lost its <em>bearing.</em>
+      </h1>
+
+      <p class="descriptor">
+        The page you're looking for doesn't exist, was moved, or never made it here. Even the North Star occasionally gets cloudy — let's get you back on course.
+      </p>
+
+      <div class="actions">
+        <a href="https://neopolaris.ai/" class="btn-ghost">
+          <span>Go to Homepage</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="mailto:info@neopolaris.ai" class="btn-text">
+          Contact Us
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="centre-divider"></div>
+
+      <div class="quick-links">
+        <span class="quick-label">Or find what you need</span>
+        <nav class="quick-list" aria-label="Quick navigation">
+          <a href="https://neopolaris.ai/services/" class="quick-link">
+            Services
+          </a>
+          <a href="https://neopolaris.ai/about/" class="quick-link">
+            About
+          </a>
+          <a href="https://neopolaris.ai/#meridian" class="quick-link">
+            Meridian OS
+          </a>
+          <a href="https://neopolaris.ai/contact/" class="quick-link">
+            Contact
+          </a>
+        </nav>
+      </div>
+
+    </main>
+
+    <!-- ── BOTTOM BAR ── -->
+    <footer class="bottom-bar">
+      <span class="bottom-copy">© 2026 NeoPolaris AI. All rights reserved.</span>
+      <nav class="bottom-links" aria-label="Footer links">
+        <a href="https://neopolaris.ai/">Privacy Policy</a>
+        <a href="https://neopolaris.ai/">Terms of Service</a>
+      </nav>
+    </footer>
+
+  </div>
+
+  <script>
+    // Auto-redirect after 30s with a countdown — silent, no UI noise
+    let countdown = 30;
+    const timer = setInterval(() => {
+      countdown--;
+      if (countdown <= 0) {
+        clearInterval(timer);
+        window.location.href = 'https://neopolaris.ai/';
+      }
+    }, 1000);
+
+    // Cancel redirect if user interacts with any link
+    document.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => clearInterval(timer));
+    });
+  </script>
+</body>
+</html>
