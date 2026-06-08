@@ -267,6 +267,17 @@
       max-width: 1400px; margin: 0 auto;
     }
 
+    .team-card {
+     display: block;
+     text-decoration: none;
+     color: inherit;
+     cursor: pointer;
+    }
+
+    .team-card:hover {
+     border-color: #7BACFF;
+    }
+
     .team-header {
       display: grid; grid-template-columns: 1fr 1.4fr;
       gap: 6rem; align-items: end;
@@ -418,7 +429,7 @@
       padding: 4rem 8vw;
       border-top: 1px solid var(--border);
       display: flex; flex-direction: row;
-      justify-content: space-between; align-items: flex-start;
+      justify-content: space-between; align-items: stretch;
       gap: 2rem;
     }
     .footer-brand { display: flex; flex-direction: column; gap: 0.45rem; }
@@ -432,7 +443,7 @@
     }
     .footer-meta a { color: var(--accent); text-decoration: none; transition: opacity 0.2s ease; }
     .footer-meta a:hover { opacity: 0.7; }
-    .footer-legal { display: flex; flex-direction: column; gap: 0.45rem; }
+    .footer-legal { display: flex; flex-direction: column; gap: 0.45rem; align-items: flex-end; }
     .footer-copy {
       font-family: var(--font-mono); font-size: 0.6rem;
       letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 0.35rem;
@@ -448,7 +459,7 @@
       font-family: var(--font-mono); font-size: 0.6rem;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--text-dim); text-decoration: none;
-      display: flex; align-items: center; gap: 0.5rem;
+      display: flex; align-items: end; gap: 0.5rem;
       transition: color 0.2s ease;
     }
     .back-top:hover { color: var(--accent); }
@@ -641,44 +652,45 @@
     </div>
   </section>
 
-  <!-- ── TEAM ── -->
-  <section id="team">
+ <!-- ── TEAM ── -->
+<section id="team">
 
-    <div class="team-header">
-      <div class="reveal">
-        <span class="section-label">[ The Team ]</span>
-        <h2 class="team-h2">The people <em>behind the work</em></h2>
-      </div>
-      <p class="team-intro reveal reveal-d1">
-        A small, focused team with deep expertise across strategy, technology, and operations. We work closely with every client — no account managers, no hand-offs.
-      </p>
+  <div class="team-header">
+    <div class="reveal">
+      <span class="section-label">[ The Team ]</span>
+      <h2 class="team-h2">The people <em>behind the work</em></h2>
     </div>
+    <p class="team-intro reveal reveal-d1">
+      A small, focused team with deep expertise across strategy, technology, and operations. We work closely with every client — no account managers, no hand-offs.
+    </p>
+  </div>
 
-    <div class="team-grid">
+  <div class="team-grid">
 
-      <div class="team-card reveal">
-        <div class="team-avatar" aria-hidden="true">HO</div>
-        <h3 class="team-name">Hawi Onyango</h3>
-        <span class="team-role">Chief Executive Officer</span>
-        <p class="team-bio">Leads strategy and client engagements. Hawi brings together business acumen and a deep understanding of the African market to guide companies through the AI adoption journey from first conversation to long-term value.</p>
-      </div>
+    <a href="https://www.linkedin.com/in/hawi-onyango-42b932355" target="_blank" rel="noopener noreferrer" class="team-card reveal">
+      <div class="team-avatar" aria-hidden="true">HO</div>
+      <h3 class="team-name">Hawi Onyango</h3>
+      <span class="team-role">Chief Executive Officer</span>
+      <p class="team-bio">Leads strategy and client engagements. Hawi brings together business acumen and a deep understanding of the African market to guide companies through the AI adoption journey from first conversation to long-term value.</p>
+    </a>
 
-      <div class="team-card reveal reveal-d1">
-        <div class="team-avatar" aria-hidden="true">NS</div>
-        <h3 class="team-name">Nelson Samuel</h3>
-        <span class="team-role">Chief Technology Officer</span>
-        <p class="team-bio">Leads AI development and technical delivery. Nelson architects and builds the systems that make AI real for our clients — translating business requirements into solutions that work in production, not just in demos.</p>
-      </div>
+    <a href="https://www.linkedin.com/in/nelsonsamuell" target="_blank" rel="noopener noreferrer" class="team-card reveal reveal-d1">
+      <div class="team-avatar" aria-hidden="true">NS</div>
+      <h3 class="team-name">Nelson Samuel</h3>
+      <span class="team-role">Chief Technology Officer</span>
+      <p class="team-bio">Leads AI development and technical delivery. Nelson architects and builds the systems that make AI real for our clients — translating business requirements into solutions that work in production, not just in demos.</p>
+    </a>
 
-      <div class="team-card reveal reveal-d2">
-        <div class="team-avatar" aria-hidden="true">PW</div>
-        <h3 class="team-name">Peggy Wangechi</h3>
-        <span class="team-role">Chief Operating Officer</span>
-        <p class="team-bio">Leads governance, compliance, and operations. Peggy ensures that every engagement runs cleanly and that every system we deliver meets the legal, ethical, and operational standards that African businesses need to stay protected.</p>
-      </div>
+    <a href="https://www.linkedin.com/in/margaret-wangechi-a6382414a" target="_blank" rel="noopener noreferrer" class="team-card reveal reveal-d2">
+      <div class="team-avatar" aria-hidden="true">PW</div>
+      <h3 class="team-name">Peggy Wangechi</h3>
+      <span class="team-role">Chief Operating Officer</span>
+      <p class="team-bio">Leads governance, compliance, and operations. Peggy ensures that every engagement runs cleanly and that every system we deliver meets the legal, ethical, and operational standards that African businesses need to stay protected.</p>
+    </a>
 
-    </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ── CTA ── -->
   <section id="cta">
@@ -727,6 +739,12 @@
     </div>
 
     <div class="footer-legal">
+       <a href="#hero" class="back-top">
+        Back to top
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+         <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+       </a>
       <p class="footer-copy">© 2026 NeoPolaris AI. All rights reserved.</p>
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
@@ -734,12 +752,7 @@
       </div>
     </div>
 
-    <a href="#hero" class="back-top">
-      Back to top
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-        <path d="M12 19V5M5 12l7-7 7 7"/>
-      </svg>
-    </a>
+   
   </footer>
 
   <script>
