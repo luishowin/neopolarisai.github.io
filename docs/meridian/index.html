@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meridian OS — NeoPolaris AI</title>
-  <meta name="description" content="Meridian OS. The AI operating system for African businesses. Coming soon from NeoPolaris AI." />
+  <title>Meridian — NeoPolaris AI</title>
+  <meta name="description" content="Meridian. The AI operating system for African businesses. Coming soon from NeoPolaris AI." />
   <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" csorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;1,300;1,400&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
@@ -24,7 +24,7 @@
       --border-hover: rgba(123,172,255,0.32);
       --font-serif: 'Inria Serif', Georgia, serif;
       --font-sans: 'Inria Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-mono: 'JetBrains Mono', mopace;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,8 +42,8 @@
     }
 
     /* ── AMBIENT ── */
-    .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .ambient-orb { position: absolute; border-radius: 50%; filter: blur(140px); }
+    .ambient { ition: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .ambient-orb { ition: absolute; border-radius: 50%; filter: blur(140px); }
 
     .orb-1 {
       width: 900px; height: 900px;
@@ -76,14 +76,14 @@
     @keyframes drift3 { from{transform:translate(0,0);} to{transform:translate(-90px,50px);} }
 
     body::before {
-      content:''; position:fixed; inset:0; z-index:1; pointer-events:none;
+      content:''; ition:fixed; inset:0; z-index:1; pointer-events:none;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       background-repeat:repeat; background-size:128px; opacity:0.35;
     }
 
     /* ── GRID LINES — subtle engineering aesthetic ── */
     .grid-lines {
-      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      ition: fixed; inset: 0; z-index: 1; pointer-events: none;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -95,7 +95,7 @@
 
     /* ── WORDMARK WATERMARK ── */
     .wordmark-bg {
-      position: fixed;
+      ition: fixed;
       bottom: -6vh; right: -3vw;
       font-family: var(--font-serif);
       font-size: clamp(22vw, 28vw, 480px);
@@ -111,7 +111,7 @@
 
     /* ── LAYOUT ── */
     .page {
-      position: relative; z-index: 2;
+      ition: relative; z-index: 2;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -254,19 +254,19 @@
       color: var(--accent); background: transparent;
       border: none; border-left: 1px solid var(--border-hover);
       padding: 0.82rem 1.4rem;
-      cursor: pointer; position: relative; overflow: hidden;
+      cursor: pointer; ition: relative; overflow: hidden;
       transition: color 0.3s ease;
       white-space: nowrap;
       display: flex; align-items: center; gap: 0.5rem;
     }
     .notify-btn::before {
-      content: ''; position: absolute; inset: 0;
+      content: ''; ition: absolute; inset: 0;
       background: var(--accent); transform: translateX(-101%);
       transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); z-index: 0;
     }
     .notify-btn:hover::before { transform: translateX(0); }
     .notify-btn:hover { color: #000; }
-    .notify-btn span { position: relative; z-index: 1; }
+    .notify-btn span { ition: relative; z-index: 1; }
 
     .notify-success {
       display: none;
@@ -311,7 +311,7 @@
 
     /* ── VERTICAL LABELS ── */
     .v-label {
-      position: fixed;
+      ition: fixed;
       font-family: var(--font-mono); font-size: 0.5rem;
       letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--text-faint);
@@ -330,7 +330,7 @@
 
     /* Corner coordinates */
     .corner {
-      position: fixed;
+      ition: fixed;
       font-family: var(--font-mono); font-size: 0.5rem;
       letter-spacing: 0.12em; color: var(--text-faint);
       opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
@@ -386,7 +386,7 @@
 
   <div class="wordmark-bg" aria-hidden="true">M</div>
 
-  <span class="v-label v-label-right" aria-hidden="true">MOS-001 / In Development</span>
+  <span class="v-label v-label-right" aria-hidden="true">MVP / In Development</span>
   <span class="corner corner-tr" aria-hidden="true">NeoPolaris AI — Nairobi, KE</span>
 
   <div class="page">
@@ -420,10 +420,9 @@
 
       <div class="product-lockup">
         <span class="product-name">Meridian</span>
-        <span class="product-name-em">OS</span>
       </div>
 
-      <span class="product-sub">The AI operating system for African businesses</span>
+      <span class="product-sub">The AI software platform for African businesses</span>
 
       <div class="divider"></div>
 
@@ -437,7 +436,7 @@
         <div class="copy-item">
           <span class="copy-label">[ Why it matters ]</span>
           <p class="copy-text">
-            Most businesses end up with fragmented AI tools that don't talk to each other. Meridian OS is the infrastructure that holds it all together — built for the way African businesses actually operate.
+            t businesses end up with fragmented AI tools that don't talk to each other. Meridian is the infrastructure that holds it all together — built for the way African businesses actually operate.
           </p>
         </div>
       </div>
@@ -459,7 +458,7 @@
           </button>
         </div>
         <p class="notify-success" id="notifySuccess" role="status">
-          ✓ &nbsp;You're on the list. We'll reach out when Meridian OS is ready.
+          ✓ &nbsp;You're on the list. We'll reach out when Meridian is ready.
         </p>
       </div>
 
