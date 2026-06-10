@@ -254,19 +254,19 @@
       color: var(--accent); background: transparent;
       border: none; border-left: 1px solid var(--border-hover);
       padding: 0.82rem 1.4rem;
-      cursor: pointer; ition: relative; overflow: hidden;
+      cursor: pointer; position: relative; overflow: hidden;
       transition: color 0.3s ease;
       white-space: nowrap;
       display: flex; align-items: center; gap: 0.5rem;
     }
     .notify-btn::before {
-      content: ''; ition: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: var(--accent); transform: translateX(-101%);
       transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); z-index: 0;
     }
     .notify-btn:hover::before { transform: translateX(0); }
     .notify-btn:hover { color: #000; }
-    .notify-btn span { ition: relative; z-index: 1; }
+    .notify-btn span { position: relative; z-index: 1; }
 
     .notify-success {
       display: none;
@@ -311,7 +311,7 @@
 
     /* ── VERTICAL LABELS ── */
     .v-label {
-      ition: fixed;
+      position: fixed;
       font-family: var(--font-mono); font-size: 0.5rem;
       letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--text-faint);
@@ -330,7 +330,7 @@
 
     /* Corner coordinates */
     .corner {
-      ition: fixed;
+      position: fixed;
       font-family: var(--font-mono); font-size: 0.5rem;
       letter-spacing: 0.12em; color: var(--text-faint);
       opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
