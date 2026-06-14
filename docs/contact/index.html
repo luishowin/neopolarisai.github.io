@@ -707,79 +707,104 @@
     </a>
   </footer>
 
-  <script>
-    // ── NAV ──
-    const toggle = document.querySelector('.nav-toggle');
-    const navLinks = document.getElementById('navLinks');
+<script>
+  // ── NAV ── (unchanged)
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('navLinks');
 
-    toggle.addEventListener('click', () => {
-      const open = toggle.classList.toggle('open');
-      navLinks.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
+  toggle.addEventListener('click', () => {
+    const open = toggle.classList.toggle('open');
+    navLinks.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  function closeNav() {
+    toggle.classList.remove('open');
+    navLinks.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!toggle.contains(e.target) && !navLinks.contains(e.target)) closeNav();
+  });
+
+  // ── REVEAL ── (unchanged)
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // ── FORM ──
+  async function handleSubmit() {
+    const fields = {
+      fullName: document.getElementById('fullName'),
+      company:  document.getElementById('company'),
+      email:    document.getElementById('email'),
+      service:  document.getElementById('service'),
+      message:  document.getElementById('message'),
+    };
+
+    // Validation (unchanged)
+    let valid = true;
+    Object.values(fields).forEach(f => {
+      const empty = !f.value.trim();
+      const emailInvalid = f.type === 'email' && f.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value);
+      f.closest('.field').style.outline = (empty || emailInvalid) ? '1px solid rgba(255,100,100,0.5)' : '';
+      if (empty || emailInvalid) valid = false;
     });
 
-    function closeNav() {
-      toggle.classList.remove('open');
-      navLinks.classList.remove('open');
-      toggle.setAttribute('aria-expanded', false);
-      document.body.style.overflow = '';
-    }
+    if (!valid) return;
 
-    document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !navLinks.contains(e.target)) closeNav();
-    });
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Sending…';
 
-    // ── REVEAL ──
-    const ro = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    // Build payload — Formspree uses field `name` attributes as keys
+    const data = new FormData();
+    data.append('fullName',  fields.fullName.value.trim());
+    data.append('company',   fields.company.value.trim());
+    data.append('jobTitle',  document.getElementById('jobTitle').value.trim());
+    data.append('email',     fields.email.value.trim());
+    data.append('service',   fields.service.value);
+    data.append('message',   fields.message.value.trim());
 
-    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-    // ── FORM ──
-    function handleSubmit() {
-      const fields = {
-        fullName: document.getElementById('fullName'),
-        company:  document.getElementById('company'),
-        email:    document.getElementById('email'),
-        service:  document.getElementById('service'),
-        message:  document.getElementById('message'),
-      };
-
-      // Simple validation
-      let valid = true;
-      Object.values(fields).forEach(f => {
-        const empty = !f.value.trim();
-        const emailInvalid = f.type === 'email' && f.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value);
-        f.closest('.field').style.outline = (empty || emailInvalid) ? '1px solid rgba(255,100,100,0.5)' : '';
-        if (empty || emailInvalid) valid = false;
+    try {
+      const res = await fetch('https://formspree.io/f/mwvjaowy', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' },
       });
 
-      if (!valid) return;
-
-      // Disable button during "send"
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.querySelector('span').textContent = 'Sending…';
-
-      // Simulate send (replace with your form backend / Formspree / Netlify Forms)
-      setTimeout(() => {
+      if (res.ok) {
         document.getElementById('contactFormContainer').style.display = 'none';
         const success = document.getElementById('formSuccess');
         success.classList.add('visible');
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 900);
+      } else {
+        const json = await res.json();
+        const msg = json?.errors?.map(e => e.message).join(', ') || 'Submission failed. Please try again.';
+        btn.querySelector('span').textContent = 'Send Message';
+        btn.disabled = false;
+        alert(msg); // swap for a styled error state if you want
+      }
+    } catch (_) {
+      btn.querySelector('span').textContent = 'Send Message';
+      btn.disabled = false;
+      alert('Network error. Please check your connection and try again.');
     }
+  }
 
-    // Clear red outline on input
-    document.querySelectorAll('.field input, .field select, .field textarea').forEach(el => {
-      el.addEventListener('input', () => {
-        el.closest('.field').style.outline = '';
-      });
+  // Clear red outline on input (unchanged)
+  document.querySelectorAll('.field input, .field select, .field textarea').forEach(el => {
+    el.addEventListener('input', () => {
+      el.closest('.field').style.outline = '';
     });
-  </script>
+  });
+</script>
 </body>
 </html>
