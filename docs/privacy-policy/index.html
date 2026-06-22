@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - NeoPolaris AI</title>
+<meta name="description" content="How NeoPolaris AI collects, uses, and protects your data. Plain language, governed by Kenya's Data Protection Act, 2019.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='black'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%237BACFF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inria+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000;
+    --fg:#f2f2ef;
+    --fg-dim:rgba(242,242,239,0.64);
+    --fg-dimmer:rgba(242,242,239,0.4);
+    --accent:#7BACFF;
+    --accent-soft:rgba(123,172,255,0.12);
+    --accent-line:rgba(123,172,255,0.35);
+    --border:rgba(255,255,255,0.09);
+    --surface:rgba(255,255,255,0.025);
+    --surface-hi:rgba(255,255,255,0.05);
+    --serif:'Inria Serif', Georgia, serif;
+    --sans:'Inria Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0;
+    background:var(--accent); color:#000; padding:8px 14px;
+    font-family:var(--mono); font-size:13px; z-index:200;
+  }
+  .skip-link:focus{ left:8px; top:8px; }
+
+  /* ---------- ambient texture ---------- */
+  .noise{
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .orb{
+    position:fixed; border-radius:50%; filter:blur(90px);
+    pointer-events:none; z-index:0;
+  }
+  .orb-1{
+    width:560px; height:560px; top:-220px; right:-160px;
+    background:radial-gradient(circle, rgba(123,172,255,0.30), transparent 70%);
+  }
+  .orb-2{
+    width:480px; height:480px; bottom:-200px; left:-180px;
+    background:radial-gradient(circle, rgba(123,172,255,0.18), transparent 70%);
+  }
+
+  /* ---------- layout helpers ---------- */
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.06em;
+    color:var(--accent); display:inline-flex; align-items:center; gap:8px;
+    margin:0 0 18px;
+  }
+  .eyebrow::before, .eyebrow::after{ content:'—'; opacity:0.5; }
+  em{ font-style:italic; color:var(--accent); font-family:inherit; }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(0,0,0,0.72); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    max-width:var(--maxw); margin:0 auto; padding:18px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--sans); font-weight:700; font-size:16px;
+    color:var(--fg); letter-spacing:0.01em; display:flex; align-items:center; gap:9px;
+  }
+  .logo:hover{ text-decoration:none; }
+  .logo .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
+  .nav-links{ display:flex; gap:34px; list-style:none; margin:0; padding:0; }
+  .nav-links a{ color:var(--fg-dim); font-size:14.5px; font-weight:500; }
+  .nav-links a:hover{ color:var(--fg); text-decoration:none; }
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--border); color:var(--fg);
+    width:38px; height:38px; border-radius:7px; cursor:pointer;
+  }
+  .nav-toggle span{
+    display:block; width:16px; height:1px; background:var(--fg); margin:4px auto;
+    transition:transform 0.25s ease, opacity 0.25s ease;
+  }
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; padding:8px 28px 18px;
+    border-top:1px solid var(--border);
+  }
+  .mobile-menu a{
+    padding:12px 0; color:var(--fg-dim); font-size:15px; border-bottom:1px solid var(--border);
+  }
+  .mobile-menu.open{ display:flex; }
+
+  @media (max-width:760px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; z-index:2;
+    padding:96px 0 56px;
+    border-bottom:1px solid var(--border);
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:400; font-size:clamp(34px, 5.4vw, 56px);
+    line-height:1.12; margin:0 0 20px; max-width:760px;
+  }
+  .hero .lede{
+    color:var(--fg-dim); font-size:17px; max-width:600px; margin:0 0 28px;
+  }
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:10px 24px; font-family:var(--mono);
+    font-size:12.5px; color:var(--fg-dimmer);
+  }
+  .meta-row b{ color:var(--fg-dim); font-weight:500; }
+
+  /* ---------- content shell with TOC ---------- */
+  .content-shell{
+    position:relative; z-index:2;
+    max-width:var(--maxw); margin:0 auto; padding:56px 28px 0;
+    display:grid; grid-template-columns:220px 1fr; gap:64px;
+    align-items:start;
+  }
+  .toc{
+    position:sticky; top:96px;
+    font-family:var(--mono); font-size:12.5px;
+  }
+  .toc-label{ color:var(--fg-dimmer); letter-spacing:0.06em; margin-bottom:14px; }
+  .toc ul{ list-style:none; margin:0; padding:0; border-left:1px solid var(--border); }
+  .toc li{ margin:0; }
+  .toc a{
+    display:block; padding:7px 0 7px 16px; color:var(--fg-dimmer);
+    border-left:1px solid transparent; margin-left:-1px; transition:color 0.2s;
+  }
+  .toc a:hover{ color:var(--fg-dim); text-decoration:none; }
+  .toc a.active{ color:var(--accent); border-left-color:var(--accent); }
+
+  @media (max-width:900px){
+    .content-shell{ grid-template-columns:1fr; gap:0; }
+    .toc{ display:none; }
+  }
+
+  /* ---------- sections ---------- */
+  .panel{ max-width:680px; }
+  section.block{
+    padding:44px 0; border-bottom:1px solid var(--border);
+    opacity:0; transform:translateY(14px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  section.block.visible{ opacity:1; transform:translateY(0); }
+  section.block:last-of-type{ border-bottom:none; }
+
+  section.block h2{
+    font-family:var(--serif); font-weight:400; font-size:26px; margin:0 0 16px;
+  }
+  section.block p{ color:var(--fg-dim); margin:0 0 14px; }
+  section.block ul, section.block ol{ color:var(--fg-dim); padding-left:20px; margin:0 0 14px; }
+  section.block li{ margin-bottom:8px; }
+  section.block strong{ color:var(--fg); font-weight:600; }
+
+  .tldr{
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:26px 28px; margin:6px 0 0;
+  }
+  .tldr ul{ margin:0; padding-left:0; list-style:none; }
+  .tldr li{
+    position:relative; padding-left:22px; color:var(--fg-dim); margin-bottom:11px;
+  }
+  .tldr li:last-child{ margin-bottom:0; }
+  .tldr li::before{
+    content:'→'; position:absolute; left:0; color:var(--accent); font-family:var(--mono);
+  }
+
+  .spec-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:6px 0 18px;
+  }
+  @media (max-width:560px){ .spec-grid{ grid-template-columns:1fr; } }
+  .spec-card{
+    border:1px solid var(--border); background:var(--surface); border-radius:10px;
+    padding:16px 18px;
+  }
+  .spec-card .k{
+    font-family:var(--mono); font-size:11.5px; color:var(--accent);
+    letter-spacing:0.05em; display:block; margin-bottom:6px;
+  }
+  .spec-card .v{ font-size:14.5px; color:var(--fg-dim); }
+
+  table.data-table{
+    width:100%; border-collapse:collapse; margin:6px 0 18px; font-size:14.5px;
+  }
+  table.data-table th, table.data-table td{
+    text-align:left; padding:10px 12px; border-bottom:1px solid var(--border);
+    vertical-align:top;
+  }
+  table.data-table th{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.05em;
+    color:var(--fg-dimmer); font-weight:500; text-transform:uppercase;
+  }
+  table.data-table td{ color:var(--fg-dim); }
+  table.data-table td:first-child{ color:var(--fg); white-space:nowrap; }
+
+  .pill-row{ display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 18px; }
+  .pill{
+    font-family:var(--mono); font-size:12px; color:var(--fg-dim);
+    border:1px solid var(--border); border-radius:99px; padding:5px 12px;
+  }
+
+  /* ---------- closing CTA ---------- */
+  .cta{
+    position:relative; z-index:2;
+    text-align:center; padding:90px 28px; border-bottom:1px solid var(--border);
+  }
+  .cta .eyebrow{ justify-content:center; }
+  .cta h2{
+    font-family:var(--serif); font-weight:400; font-size:clamp(28px, 4vw, 42px);
+    margin:0 auto 28px; max-width:600px; line-height:1.2;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--accent); color:#000; font-weight:600; font-size:15px;
+    padding:13px 26px; border-radius:9px; transition:transform 0.2s ease, opacity 0.2s ease;
+  }
+  .btn:hover{ text-decoration:none; transform:translateY(-1px); opacity:0.92; }
+
+  /* ---------- footer ---------- */
+  footer{ position:relative; z-index:2; padding:48px 28px 36px; }
+  .footer-inner{
+    max-width:var(--maxw); margin:0 auto;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;
+  }
+  .footer-brand{ font-family:var(--mono); font-size:13px; color:var(--fg-dimmer); }
+  .footer-brand .name{ color:var(--fg-dim); display:block; margin-bottom:4px; }
+  .footer-brand a{ color:var(--fg-dimmer); }
+  .footer-links{ display:flex; gap:18px; align-items:center; font-family:var(--mono); font-size:12.5px; }
+  .footer-links a{ color:var(--fg-dimmer); }
+  .footer-bottom{
+    max-width:var(--maxw); margin:28px auto 0; padding-top:20px;
+    border-top:1px solid var(--border);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-family:var(--mono); font-size:12px; color:var(--fg-dimmer);
+  }
+  .footer-bottom a{ color:var(--fg-dimmer); }
+  .footer-bottom .legal a.current{ color:var(--accent); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; animation:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="noise" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<header>
+  <nav aria-label="Primary">
+    <a href="https://neopolaris.ai/" class="logo"><span class="dot"></span> NeoPolaris AI</a>
+    <ul class="nav-links">
+      <li><a href="https://neopolaris.ai/services/">Services</a></li>
+      <li><a href="https://neopolaris.ai/about/">About</a></li>
+      <li><a href="https://neopolaris.ai/meridian/">Meridian</a></li>
+      <li><a href="https://neopolaris.ai/contact/">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="https://neopolaris.ai/services/">Services</a>
+    <a href="https://neopolaris.ai/about/">About</a>
+    <a href="https://neopolaris.ai/meridian/">Meridian</a>
+    <a href="https://neopolaris.ai/contact/">Contact</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Privacy Policy</p>
+      <h1>Your data, handled the way <em>we'd</em> want ours handled.</h1>
+      <p class="lede">This page explains what NeoPolaris AI collects when you visit this site or get in touch, what we do with it, and how to tell us to stop. No filler, no fifteen pages of boilerplate.</p>
+      <div class="meta-row">
+        <span><b>Last updated:</b> 22 June 2026</span>
+        <span><b>Applies to:</b> neopolaris.ai and our client engagements</span>
+        <span><b>Governing law:</b> Kenya Data Protection Act, 2019</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="content-shell">
+
+    <aside class="toc" aria-label="Table of contents">
+      <p class="toc-label">[ On this page ]</p>
+      <ul>
+        <li><a href="#short-version">The short version</a></li>
+        <li><a href="#what-we-collect">What we collect</a></li>
+        <li><a href="#how-we-use-it">How we use it</a></li>
+        <li><a href="#who-we-share-with">Who we share it with</a></li>
+        <li><a href="#cross-border">Cross-border transfers</a></li>
+        <li><a href="#retention">Storage &amp; retention</a></li>
+        <li><a href="#your-rights">Your rights</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact-us">Contact us</a></li>
+      </ul>
+    </aside>
+
+    <div class="panel">
+
+      <section class="block" id="short-version">
+        <h2>The short version</h2>
+        <p>For people who'd rather not read a legal document to find out if we're selling their email address. We're not. Here's the gist:</p>
+        <div class="tldr">
+          <ul>
+            <li>We only collect what you give us through our contact form, or what you share with us directly during a client engagement.</li>
+            <li>We use it to respond to your enquiry, scope your project, and deliver the work you've hired us for. That's it.</li>
+            <li>We don't sell or rent your data, run ad trackers, or send marketing newsletters. We told you that on the contact page, and we mean it here too.</li>
+            <li>Two outside services touch your data on our behalf: Formspree (handles form submissions) and GitHub Pages (hosts this site). Both are named below.</li>
+            <li>You can ask to see, correct, or delete what we hold on you at any time. Email is the fastest way: <a href="mailto:info@neopolaris.ai">info@neopolaris.ai</a>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="block" id="what-we-collect">
+        <h2>What we collect</h2>
+        <p>We keep this deliberately narrow. The site itself has no analytics, no ad pixels, and no cookies that track you across sessions. What we do collect:</p>
+        <div class="spec-grid">
+          <div class="spec-card">
+            <span class="k">VIA THE CONTACT FORM</span>
+            <span class="v">Full name, company name, job title, email address, the service you're enquiring about, and your message.</span>
+          </div>
+          <div class="spec-card">
+            <span class="k">VIA WHATSAPP / PHONE</span>
+            <span class="v">Your number and whatever you choose to share, if you reach out to +254 746 392 370 directly.</span>
+          </div>
+          <div class="spec-card">
+            <span class="k">DURING AN ENGAGEMENT</span>
+            <span class="v">Business information you share under a signed agreement, scoped strictly to the work at hand.</span>
+          </div>
+          <div class="spec-card">
+            <span class="k">AUTOMATICALLY, VIA HOSTING</span>
+            <span class="v">Standard server logs (IP address, browser, pages requested) collected by GitHub Pages, not by us directly.</span>
+          </div>
+        </div>
+        <p>We don't ask for, and don't want, more than this. If a form ever asks you for something that feels out of scope for "let's talk about your business," tell us — that's a bug, not a feature.</p>
+      </section>
+
+      <section class="block" id="how-we-use-it">
+        <h2>How we use it</h2>
+        <ul>
+          <li>To reply to your enquiry, typically within one business day.</li>
+          <li>To assess whether and how we can help, and to put together a proposal or scope.</li>
+          <li>To deliver, manage, and support the work once you're a client.</li>
+          <li>To keep the business records Kenyan law requires of us — contracts, invoices, correspondence tied to active engagements.</li>
+        </ul>
+        <p>We do not use your contact details for marketing emails, and we do not build profiles of site visitors for advertising. There's no newsletter to opt out of, because there isn't one.</p>
+      </section>
+
+      <section class="block" id="who-we-share-with">
+        <h2>Who we share it with</h2>
+        <p>Two processors handle data on our behalf so this site and its contact form can function:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Processor</th><th>Role</th><th>Where</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Formspree, Inc.</td>
+              <td>Receives and relays contact form submissions to our inbox.</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>GitHub, Inc.</td>
+              <td>Hosts this static website via GitHub Pages; logs basic access data.</td>
+              <td>United States</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Beyond that: specialists we occasionally bring onto a specific engagement are bound by confidentiality terms and only see what's relevant to that work. We disclose data to Kenyan authorities only when legally compelled to — a court order, not a casual request. We do not sell or rent personal data. There's no exception clause hiding that sentence.</p>
+      </section>
+
+      <section class="block" id="cross-border">
+        <h2>Cross-border transfers</h2>
+        <p>Because Formspree and GitHub operate outside Kenya, your data may be processed on servers in the United States. Under section 48 of the Data Protection Act, 2019, we rely on the contractual and security safeguards those providers publish — you can review them directly: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree's privacy policy</a> and <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's privacy statement</a>.</p>
+      </section>
+
+      <section class="block" id="retention">
+        <h2>Storage &amp; retention</h2>
+        <p>Enquiries that don't turn into a project are kept only as long as needed to respond, and we clear out anything inactive after <strong>24 months</strong>. For active clients, records are retained for the life of the engagement plus whatever statutory period Kenyan business and tax law requires afterward. When a retention period lapses, we delete — we don't quietly keep "just in case."</p>
+      </section>
+
+      <section class="block" id="your-rights">
+        <h2>Your rights</h2>
+        <p>As a data subject under Kenya's Data Protection Act, 2019, you can ask us to:</p>
+        <div class="pill-row">
+          <span class="pill">Access what we hold</span>
+          <span class="pill">Correct inaccuracies</span>
+          <span class="pill">Delete your data</span>
+          <span class="pill">Object to processing</span>
+          <span class="pill">Receive it in a portable format</span>
+          <span class="pill">Restrict processing</span>
+        </div>
+        <p>Email <a href="mailto:info@neopolaris.ai">info@neopolaris.ai</a> and we'll act on it within a reasonable time, in line with the Act. If you feel we've mishandled your data and we haven't resolved it to your satisfaction, you can lodge a complaint with Kenya's <a href="https://www.odpc.go.ke/" target="_blank" rel="noopener">Office of the Data Protection Commissioner (ODPC)</a>, Britam Towers, Hospital Road, Upperhill, Nairobi.</p>
+      </section>
+
+      <section class="block" id="security">
+        <h2>Security</h2>
+        <p>This site is a static, self-contained build with no database to breach — by design, there's less surface area to attack. Form submissions and client communications are handled through providers that maintain their own security and encryption standards. No method of transmission or storage is ever 100% secure, and we won't pretend otherwise, but we keep what we hold to a minimum on purpose, precisely because the smallest dataset is the safest one.</p>
+      </section>
+
+      <section class="block" id="children">
+        <h2>Children</h2>
+        <p>NeoPolaris AI is a business-to-business consultancy. This site isn't directed at, and we don't knowingly collect data from, anyone under 18. If we discover we've inadvertently collected a minor's data, we'll delete it.</p>
+      </section>
+
+      <section class="block" id="changes">
+        <h2>Changes to this policy</h2>
+        <p>If this policy changes in a way that matters, we'll update the date at the top of this page and, for active clients, flag it directly rather than burying it in a footnote. Checking back occasionally is on you; telling you clearly when it counts is on us.</p>
+      </section>
+
+      <section class="block" id="contact-us">
+        <h2>Contact us</h2>
+        <p>Questions about this policy, or about data we hold on you, go straight to the team — no support ticket queue in between.</p>
+        <ul>
+          <li>Email: <a href="mailto:info@neopolaris.ai">info@neopolaris.ai</a></li>
+          <li>Phone &amp; WhatsApp: <a href="tel:+254746392370">+254 746 392 370</a></li>
+          <li>Location: Nairobi, Kenya</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <section class="cta">
+    <p class="eyebrow">NeoPolaris AI</p>
+    <h2>Still have questions about your data? Let's talk about it, <em>directly.</em></h2>
+    <a href="mailto:info@neopolaris.ai" class="btn">Email Us →</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="name">NeoPolaris AI</span>
+      Nairobi, Kenya<br>
+      <a href="mailto:info@neopolaris.ai">info@neopolaris.ai</a>
+    </div>
+    <div class="footer-links">
+      <a href="#main">Back to top</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NeoPolaris AI. All rights reserved.</span>
+    <span class="legal">
+      <a href="#main" class="current">Privacy Policy</a>
+      <a href="https://neopolaris.ai/terms/">Terms of Service</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }));
+
+  // scroll-reveal
+  const blocks = document.querySelectorAll('section.block');
+  const reveal = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  blocks.forEach(b => reveal.observe(b));
+
+  // TOC active-state tracking
+  const tocLinks = document.querySelectorAll('.toc a');
+  const sectionMap = new Map();
+  tocLinks.forEach(link => {
+    const id = link.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) sectionMap.set(el, link);
+  });
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = sectionMap.get(entry.target);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sectionMap.forEach((_, el) => tocObserver.observe(el));
+</script>
+
+</body>
+</html>
