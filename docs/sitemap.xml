@@ -24,7 +24,25 @@
   <url>
     <loc>https://neopolaris.ai/about/</loc>
     <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+   <url>
+    <loc>https://neopolaris.ai/meridian/</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+
+   <url>
+    <loc>https://neopolaris.ai/terms-of-service/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+   <url>
+    <loc>https://neopolaris.ai/privacy-policy/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 
