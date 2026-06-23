@@ -1,27 +1,17 @@
-# Beben Design
+# NeoPolaris AI
 
-> Beben Design is a design-led digital product studio based in Nairobi, Kenya, specializing in UX research, UI design, brand identity, front-end development, and digital product strategy. The studio treats design as research-backed problem-solving rather than decoration — every engagement starts with understanding user behaviour before any visual or code work begins.
+> AI strategy, governance, custom development, and cybersecurity consultancy based in Nairobi, Kenya, helping African businesses adopt AI that is safe, legal, and built to last.
 
-Capabilities span brand identity and visual design, UX research, UI design for web/mobile/desktop, human-machine interfaces (HMI) for hardware-driven products, posters and corporate print, and front-end development in HTML/CSS, React, Webflow, Node.js, and WordPress. The studio serves clients across e-commerce, automotive, healthcare, recreation, real estate, retail, and agriculture, and works as full studio lead, team augmentation, or long-term partner. Pricing starts around $99 USD for simple static sites, scaling with scope via fixed-price, line-item quotes (no hourly billing). The studio is based in Westlands, Nairobi, and is reachable directly via WhatsApp or email — no sales layer.
+NeoPolaris AI works directly with CEOs and CTOs to find where AI creates real, measurable value inside their business, build the systems to capture it, and put the governance and security guardrails in place from day one. Engagements run end-to-end under one team — strategy, governance, development, and security — rather than being split across vendors, and the company trains client teams to own what's built rather than staying dependent on NeoPolaris after delivery. NeoPolaris AI is also building Meridian, an AI operating system giving organisations a unified layer for deploying, monitoring, and governing AI across their operations, currently in early development.
 
-## Services
+## Site
 
-- [Brand Identity & Visual Design](https://beben.design/services/): Logo systems (primary, secondary, monochrome, favicon-optimised), structured brand guides, WCAG-compliant colour systems, typography hierarchy, and optional motion branding.
-- [UX Research & Design](https://beben.design/services/): User interviews, journey mapping, information architecture, low-fidelity wireframes, clickable prototypes, and usability testing measured against SUS scores and task-completion data.
-- [UI Design & Component Systems](https://beben.design/services/): Atomic, developer-ready UI kits in Figma with full component states, WCAG AA accessibility annotations, and developer handoff specs.
-- [Digital Strategy & Product Planning](https://beben.design/services/): MVP feature prioritisation, phased technical roadmaps, competitor UX benchmarking, and discovery workshops for early-stage concepts.
+- [Services](https://neopolaris.ai/services/): The four service lines — AI Strategy, AI Governance, Custom AI Development, and Cybersecurity — and the four-stage engagement process: Discovery, Design, Build & Deploy, Handover & Training.
+- [About](https://neopolaris.ai/about/): Background on NeoPolaris AI and why it's built specifically for the African operating environment rather than adapted from a Western consultancy playbook.
+- [Meridian](https://neopolaris.ai/meridian/): Product page for Meridian, NeoPolaris AI's in-development AI operating system, with early-access signup.
+- [Contact](https://neopolaris.ai/contact/): Enquiry form (name, company, job title, email, service of interest, message) plus direct email, phone/WhatsApp, and location.
 
-## Tools
+## Policies
 
-- [Free Web Tools](https://beben.design/tools/): A growing collection of single-purpose, browser-native utilities — no accounts, no server calls, no data collection. Downloadable as standalone HTML files that run offline.
-- [QR Code Generator](https://beben.design/qr-code-generator/): Free, watermark-free SVG QR code generator. Runs entirely client-side; exportable as SVG or downloadable as a self-contained HTML file.
-
-## Company
-
-- [Contact](https://beben.design/contact/): Direct WhatsApp and email contact. Studio hours Mon–Fri, 08:00–18:00 EAT. Discovery call → fixed-price proposal → 25% deposit to start.
-- [Legal](https://beben.design/legal/): Terms of use, IP ownership terms, and data-handling practices under Kenya's Data Protection Act.
-- [Privacy Policy](https://beben.design/privacy/): Data collection, cookies, and privacy practices.
-
-## Optional
-
-- [Shop](https://beben.design/shop/): Upcoming digital products — UI kits, templates, icon sets, and print assets. In development, launching 2026.
+- [Privacy Policy](https://neopolaris.ai/privacy/): What data NeoPolaris AI collects through this website and client engagements, how it's used, who processes it, and data subject rights under Kenya's Data Protection Act, 2019.
+- [Terms of Service](https://neopolaris.ai/terms/): Terms governing use of this website and the baseline for client engagements. Signed service agreements take precedence over these terms where the two conflict.
