@@ -1,39 +1,50 @@
 # neopolarisai.github.io
 
-Official website for **Neopolaris AI** - powered by GitHub Pages.
+Official website source for **Neopolaris AI**, hosted via GitHub Pages.
 
 ## Overview
 
-This repository contains the source code and static files for the Neopolaris AI website. The site is built using HTML, CSS, and JavaScript and is hosted on GitHub Pages.
+This repository contains the static website source for the Neopolaris AI landing site. The site is built with HTML, CSS, and JavaScript, and the published site is served from the `docs/` directory.
 
-## Website Structure
+## Site Structure
 
-- **Home** (`/home/`) - Main landing page with introduction
-- **About** (`/about/`) - Information about Neopolaris and our mission
-- **Services** (`/services/`) - Details about our offerings and capabilities
-- **Contact** (`/contact/`) - Contact information and inquiry form
+- `docs/index.html` — Home page
+- `docs/about/index.html` — About page
+- `docs/services/index.html` — Services page
+- `docs/contact/index.html` — Contact page
+- `docs/meridian/index.html` — Meridian page
+- `docs/privacy-policy/index.html` — Privacy Policy page
+- `docs/terms-of-service/index.html` — Terms of Service page
+- `docs/404.html` — Custom 404 page
 
-## Project Assets
+## Repository Contents
 
-- `assets/images/` - Images and visual media used throughout the site
-- `icons/` - Icon assets for UI components
-- `docs/` - Static HTML files and generated documentation
+- `docs/` — All published site files for GitHub Pages
+- `docs/assets/` — Images and visual media used throughout the site
+- `docs/icons/` — Icon assets used by the site
+- `docs/CNAME` — Custom domain configuration
+- `docs/robots.txt` — Search engine crawling rules
+- `docs/sitemap.xml` — XML sitemap for SEO
+- `docs/llms.txt` — Additional site-specific content
 
 ## Features
 
-- Responsive design for desktop and mobile devices
-- SEO optimization with sitemap and robots.txt
+- Responsive layout for desktop and mobile
+- Static HTML/CSS/JavaScript site
+- SEO support with sitemap and robots directives
 - Custom 404 error page
-- Clean navigation across multiple sections
+- Simple, clean navigation across sections
 
-## How to Access
+## Live Site
 
-Visit the live website at: https://neopolarisai.github.io/
+The website is available at: https://neopolarisai.github.io/
 
 ## Development
 
-This is a static website built with vanilla HTML/CSS/JavaScript. To modify content or styling, edit the respective HTML files in the `docs/` directory.
+Edit and maintain the website content directly in the `docs/` directory. Commit changes to the repository to update the site on GitHub Pages.
 
 ---
 
-**Note:** This is the official Neopolaris website. Unauthorized copying or reproduction is not permitted.
+**Note:** This repository contains the official Neopolaris AI website source.
+
+Copyright © 2026 NeoPolarisAI. All rights reserved. This repository is public for hosting purposes only — no permission is granted to reuse, copy, or redistribute this code or content.
